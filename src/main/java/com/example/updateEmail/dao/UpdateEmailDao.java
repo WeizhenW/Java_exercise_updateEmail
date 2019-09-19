@@ -23,7 +23,7 @@ public class UpdateEmailDao {
         // If the user node is null
         // return a 500 / internal service error message json node.
         // (Hint: use createReturnMessage and variables from UpdateEmailConstants.)
-        if(user == null) {
+        if(user == null ) {
             return createReturnMessage(UpdateEmailConstants.HTTP_STATUS_500, UpdateEmailConstants.INTERNAL_SERVICE_ERROR_MESSAGE);
         }
         String userId = UpdateEmailAddressUtility.removeOuterDoubleQuotes(UpdateEmailAddressUtility.getJsonValue(user, "userId"));
@@ -40,10 +40,10 @@ public class UpdateEmailDao {
         // UpdateEmailConstants.EMAIL_UPDATE_SUCCESS_MESSAGE as the arguments.
         try{
             updateEmailAddressFile(userId, emailAddress);
-        } catch(IllegalArgumentException error){
-            return createReturnMessage(UpdateEmailConstants.HTTP_STATUS_404, error.getMessage());
-        } catch (IOException error){
-            return createReturnMessage(UpdateEmailConstants.HTTP_STATUS_500, error.getMessage());
+        } catch(IllegalArgumentException iae){
+            return createReturnMessage(UpdateEmailConstants.HTTP_STATUS_404, iae.getMessage());
+        } catch (IOException ioe){
+            return createReturnMessage(UpdateEmailConstants.HTTP_STATUS_500, ioe.getMessage());
         }
         return createReturnMessage(UpdateEmailConstants.HTTP_STATUS_200, UpdateEmailConstants.EMAIL_UPDATE_SUCCESS_MESSAGE);
     }

@@ -97,7 +97,7 @@ public class UpdateEmailServiceTest {
         updateEmailService.validateUserId("Asdf");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
 //    public void testValidateEmailAddress_InvalidEmailAddress_InvalidTopLevelDomains() {
 //        List<String> iValidTopLevelDomains = new ArrayList<>();
 //
